@@ -4,19 +4,11 @@ Rails.application.routes.draw do
   get 'homes/top'
   get 'books/new'
   post 'books' => 'books#create'
-  get 'books/index'
-  get 'books/show'
-  get 'books/edit'
-  
+  get 'books' => 'books#index'
+  get 'books/:id' => 'books#show', as: 'book'
+  get 'books/:id/edit' => 'books#edit', as: 'edit_book'
+  patch 'books/:id' => 'books#update', as: 'update_book'
 
   #resources :books  あとで使う
 
 end
-
-
-#一応取っておくもの…エラー起きたら戻す。
-#  get 'books/new'
-#  post 'books' => 'books#create'
-#  get 'books/index'
-#  get 'books/show'
-#  get 'books/edit'
