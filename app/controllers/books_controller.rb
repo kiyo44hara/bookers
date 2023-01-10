@@ -4,12 +4,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    book  = Book.new(list_params)
+    book  = Book.new(book_params)
     book.save
-    redirect_to 'homes/top'#このままだとエラー起こる
+    redirect_to '/homes/top' #あとでshowに変える！
   end
 
   def index
+    @books = Book.all
   end
 
   def show
@@ -19,7 +20,7 @@ class BooksController < ApplicationController
   end
   
   private
-  def list_params
-    params.require(:list).permit(:title, :body)
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
 end
